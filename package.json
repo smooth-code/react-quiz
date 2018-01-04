@@ -13,13 +13,14 @@
   "scripts": {
     "build": "next build && yarn build:server",
     "build:server": "rm -rf lib && babel -d lib/server server",
-    "ci": "yarn lint",
+    "ci": "yarn lint && yarn test",
     "dev": "nodemon server/index.js",
     "format": "prettier --write \"**/*.{js,json}\"",
     "heroku-postbuild": "yarn --production=false && yarn build && yarn --production",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "start": "node lib/server/index.js"
+    "start": "node lib/server/index.js",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,md,json}": [
@@ -31,11 +32,16 @@
     "node": "v9.3.0",
     "yarn": "v1.3.2"
   },
+  "jest": {
+    "setupFiles": ["<rootDir>/testSetup.js"]
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -43,6 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
+    "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "nodemon": "^1.14.7",
     "prettier": "^1.9.2"
