@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "next build",
+    "ci": "yarn lint",
     "dev": "nodemon server/index.js",
     "format": "prettier --write \"**/*.{js,json}\"",
     "lint": "eslint .",
@@ -23,6 +24,9 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "engines": {
+    "node": "v9.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

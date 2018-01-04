@@ -4,7 +4,7 @@
       "env",
       {
         "targets": {
-          "node": "9",
+          "node": "9.3.0",
           "browsers": ["last 2 versions"]
         }
       }
