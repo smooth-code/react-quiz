@@ -11,13 +11,15 @@
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "build": "next build",
+    "build": "next build && yarn build:server",
+    "build:server": "rm -rf lib && babel -d lib/server server",
     "ci": "yarn lint",
     "dev": "nodemon server/index.js",
     "format": "prettier --write \"**/*.{js,json}\"",
+    "heroku-postbuild": "yarn --production=false && yarn build && yarn --production",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "start": "next start"
+    "start": "node lib/server/index.js"
   },
   "lint-staged": {
     "*.{js,md,json}": [
@@ -26,7 +28,8 @@
     ]
   },
   "engines": {
-    "node": "v9.3.0"
+    "node": "v9.3.0",
+    "yarn": "v1.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
