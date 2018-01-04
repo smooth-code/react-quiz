@@ -11,14 +11,25 @@
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "dev": "nodemon server/index.js",
     "build": "next build",
+    "dev": "nodemon server/index.js",
+    "format": "prettier --write \"**/*.{js,json}\"",
+    "precommit": "lint-staged",
     "start": "next start"
+  },
+  "lint-staged": {
+    "*.{js,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "nodemon": "^1.14.7"
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "nodemon": "^1.14.7",
+    "prettier": "^1.9.2"
   }
 }
