@@ -5,8 +5,12 @@
   "repository": "git@github.com:smooth-code/react-quiz.git",
   "author": "Greg Bergé <berge.greg@gmail.com>",
   "dependencies": {
+    "convict": "^4.0.2",
     "express": "^4.16.2",
+    "knex": "^0.14.2",
     "next": "^4.2.1",
+    "objection": "^0.9.4",
+    "pg": "^7.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -33,7 +37,9 @@
     "yarn": "v1.3.2"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/testSetup.js"]
+    "setupFiles": [
+      "<rootDir>/testSetup.js"
+    ]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
