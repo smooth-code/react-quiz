@@ -1,1 +1,6 @@
-export default () => 'Hello world!'
+import React from 'react'
+import Home from './Home'
+
+const firstComp = () => <Home />
+
+export default firstComp
