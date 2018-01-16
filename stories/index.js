@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-// import { action } from '@storybook/addon-actions'
 import ProgressBar from '../components/ProgressBar'
+import Timer from '../components/Timer'
 
 storiesOf('ProgressBar', module)
   .add('0/20', () => <ProgressBar currentQuestion={0} />)
@@ -12,3 +12,5 @@ storiesOf('ProgressBar', module)
   .add('Large', () => <ProgressBar size={800} />)
   .add('Without ScoreBox', () => <ProgressBar scoreBox={false} />)
   .add('Red', () => <ProgressBar color="#BD4932" />)
+
+storiesOf('Timer', module).add('Basic', () => <Timer countdown={15} />)
