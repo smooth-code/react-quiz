@@ -11,8 +11,10 @@
     "next": "^4.2.1",
     "objection": "^0.9.4",
     "pg": "^7.4.1",
+    "polished": "^1.9.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "styled-components": "^2.4.0"
   },
   "scripts": {
     "build": "next build && yarn build:server",
