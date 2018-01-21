@@ -5,6 +5,7 @@
   "repository": "git@github.com:smooth-code/react-quiz.git",
   "author": "Greg Bergé <berge.greg@gmail.com>",
   "dependencies": {
+    "@storybook/react": "^3.3.10",
     "convict": "^4.0.2",
     "express": "^4.16.2",
     "knex": "^0.14.2",
@@ -26,6 +27,7 @@
     "lint": "eslint .",
     "precommit": "lint-staged",
     "start": "node lib/server/index.js",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
   },
   "lint-staged": {

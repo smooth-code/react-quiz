@@ -81,23 +81,28 @@ const ProgressBar = ({
   currentQuestion = 0,
   questionCount = 20,
   color = '#4c909b',
+  scroreBox = true,
 }) => {
   const maxSize = Math.max(size, 150)
   const progress = Math.min(currentQuestion, questionCount)
   return (
     <Container maxSize={maxSize}>
       <Wrapper>
-        <ScoreBoxWrapper>
-          <ScoreBox color={color} progress={progress / questionCount}>
-            <ScoreContent color={color}>
-              <CurrentProgress color={color}>{currentQuestion}</CurrentProgress>
-              /{questionCount}
-            </ScoreContent>
-            <ArrowDownContainer color={color}>
-              <ArrowDown color={color} />
-            </ArrowDownContainer>
-          </ScoreBox>
-        </ScoreBoxWrapper>
+        {scroreBox && (
+          <ScoreBoxWrapper>
+            <ScoreBox color={color} progress={progress / questionCount}>
+              <ScoreContent color={color}>
+                <CurrentProgress color={color}>
+                  {currentQuestion}
+                </CurrentProgress>
+                /{questionCount}
+              </ScoreContent>
+              <ArrowDownContainer color={color}>
+                <ArrowDown color={color} />
+              </ArrowDownContainer>
+            </ScoreBox>
+          </ScoreBoxWrapper>
+        )}
         <BarWrapper maxSize={maxSize} color={color}>
           <Bar progress={progress / questionCount * 100} color={color} />
         </BarWrapper>
