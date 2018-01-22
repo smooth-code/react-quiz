@@ -1,11 +1,25 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-// import { action } from '@storybook/addon-actions'
 import ProgressBar from '../components/ProgressBar'
 
 storiesOf('ProgressBar', module)
-  .add('with Scorebox', () => (
-    // <Button onClick={action('clicked')}>Hello Button</Button>
+  .add('zero', () => (
+    <ProgressBar
+      size={800}
+      currentQuestion={0}
+      questionCount={30}
+      color="#4C909B"
+    />
+  ))
+  .add('one', () => (
+    <ProgressBar
+      size={800}
+      currentQuestion={1}
+      questionCount={30}
+      color="#4C909B"
+    />
+  ))
+  .add('half', () => (
     <ProgressBar
       size={800}
       currentQuestion={10}
@@ -13,12 +27,20 @@ storiesOf('ProgressBar', module)
       color="#4C909B"
     />
   ))
-  .add('without Scorebox', () => (
+  .add('end', () => (
+    <ProgressBar
+      size={800}
+      currentQuestion={30}
+      questionCount={30}
+      color="#4C909B"
+    />
+  ))
+  .add('small red whitout scoreBox', () => (
     <ProgressBar
       size={400}
-      currentQuestion={1}
+      currentQuestion={10}
       questionCount={20}
       color="#BD4932"
-      scroreBox={false}
+      scoreBox={false}
     />
   ))
