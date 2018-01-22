@@ -8,17 +8,17 @@ const Container = styled.div`
   overflow: visible;
 `
 
-const Score = styled.div`
-  margin: 0 3px;
+const ScoreWrapper = styled.div`
+  margin: 0 5px;
+`
 
-  div.score {
-    width: 50px;
-    margin-left: ${props => (props.progress ? '-27px' : '-20px')};
-    padding-left: calc(${props => `${props.progress * 100}%`});
-    color: ${props => invert(props.color)};
-  }
+const ScoreBox = styled.div`
+  width: 50px;
+  margin-left: ${props => (props.progress ? '-26px' : '-21px')};
+  padding-left: calc(${props => `${props.progress * 100}%`});
+  color: ${props => invert(props.color)};
 
-  div.scoreContent {
+  div:first-child {
     background-color: ${props => props.color};
     border: solid 1px ${props => darken(0.1, props.color)};
     padding: 5px;
@@ -28,11 +28,11 @@ const Score = styled.div`
     border-radius: 3px;
   }
 
-  span.currentProgress {
+  span:first-child {
     color: ${props => lighten(0.5, props.color)};
   }
 
-  div.arrowDownContainer {
+  div.arrowDown {
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
@@ -43,7 +43,7 @@ const Score = styled.div`
     margin-top: -1px;
   }
 
-  span.arrowDown {
+  div.arrowDown span {
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
@@ -86,17 +86,16 @@ const ProgressBar = ({
   return (
     <Container maxSize={maxSize}>
       {scoreBox && (
-        <Score color={color} progress={progress / questionCount}>
-          <div className="score">
-            <div className="scoreContent">
-              <span className="currentProgress">{currentQuestion}</span>
-              /{questionCount}
+        <ScoreWrapper>
+          <ScoreBox color={color} progress={progress / questionCount}>
+            <div>
+              <span>{progress}</span>/{questionCount}
             </div>
-            <div className="arrowDownContainer">
-              <span className="arrowDown" />
+            <div className="arrowDown">
+              <span />
             </div>
-          </div>
-        </Score>
+          </ScoreBox>
+        </ScoreWrapper>
       )}
       <BarWrapper
         maxSize={maxSize}
