@@ -31,19 +31,19 @@ const ScoreBox = styled.div`
   span:first-child {
     color: ${props => lighten(0.5, props.color)};
   }
+`
 
-  div.arrowDown {
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid ${props => darken(0.1, props.color)};
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -1px;
-  }
+const ArrowDown = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid ${props => darken(0.1, props.color)};
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -1px;
 
-  div.arrowDown span {
+  span {
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
@@ -91,9 +91,9 @@ const ProgressBar = ({
             <div>
               <span>{progress}</span>/{questionCount}
             </div>
-            <div className="arrowDown">
+            <ArrowDown color={color}>
               <span />
-            </div>
+            </ArrowDown>
           </ScoreBox>
         </ScoreWrapper>
       )}
