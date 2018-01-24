@@ -29,4 +29,12 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'warn',
     'prefer-promise-reject-errors': 'warn',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        // As configured in webpack and jest
+        moduleDirectory: ['node_modules', '.'],
+      },
+    },
+  },
 }

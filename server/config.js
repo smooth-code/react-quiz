@@ -8,44 +8,29 @@ const config = convict({
     default: 'development',
     env: 'NODE_ENV',
   },
-  chrome: {
-    bin: {
-      doc: 'Google Chrome binary',
-      format: 'String',
-      default: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-      env: 'GOOGLE_CHROME_BIN',
-    },
-  },
-  server: {
-    externalUrl: {
-      doc: 'The server external url',
-      format: 'url',
-      default: 'https://www.react-quiz.com',
-    },
-    port: {
-      doc: 'The server port number',
-      format: 'port',
-      default: 8000,
-      env: 'PORT',
-    },
-    logFormat: {
-      doc: 'The morgan log format to use',
-      format: ['dev', 'combined', 'common', 'short', 'tiny', ''],
-      default: 'dev',
-    },
-  },
-  sendgrid: {
-    apiKey: {
-      doc: 'SendDrid API key',
+  github: {
+    clientID: {
+      doc: 'GitHub application client ID',
       format: String,
       default: '',
-      env: 'SENDGRID_API_KEY',
+      env: 'GITHUB_CLIENT_ID',
+    },
+    clientSecret: {
+      doc: 'GitHub application client secret',
+      format: String,
+      default: '',
+      env: 'GITHUB_CLIENT_SECRET',
+    },
+    callbackURL: {
+      doc: 'GitHub application client secret',
+      format: 'url',
+      default: 'http://127.0.0.1:3000/auth/github/callback',
     },
   },
 })
 
 const env = config.get('env')
-config.loadFile(path.join(__dirname, `../../config/${env}.json`))
+config.loadFile(path.join(__dirname, `../config/${env}.json`))
 config.validate()
 
 export default config

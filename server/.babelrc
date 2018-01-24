@@ -4,11 +4,10 @@
       "env",
       {
         "targets": {
-          "browsers": ["last 2 versions"]
+          "node": "9.3.0"
         }
       }
-    ],
-    "react"
+    ]
   ],
   "plugins": [
     "transform-object-rest-spread",
