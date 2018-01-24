@@ -15,3 +15,12 @@ cache:
   directories:
     - ".eslintcache"
     - "node_modules"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'CREATE DATABASE test;' -U postgres
+
+addons:
+  postgresql: '9.6'

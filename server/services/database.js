@@ -1,7 +1,7 @@
 import Knex from 'knex'
 import { Model } from 'objection'
-import config from '../config'
-import knexConfig from '../../../knexfile'
+import config from 'server/config'
+import knexConfig from '../../knexfile'
 
 let knex
 
