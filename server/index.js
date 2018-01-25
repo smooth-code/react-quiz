@@ -1,4 +1,5 @@
 import next from 'next'
+import path from 'path'
 import express from 'express'
 import passport from 'passport'
 import { Strategy as GitHubStrategy } from 'passport-github2'
@@ -32,6 +33,10 @@ app
   .then(() => {
     const server = express()
 
+    server.use(express.static(path.resolve(__dirname, '../public')))
+    server.use(
+      express.static(path.resolve(__dirname, '../node_modules/prismjs/themes')),
+    )
     server.use(passport.initialize())
     server.get('/', (req, res) => {
       const actualPage = '/Home'
