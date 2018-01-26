@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import ProgressBar from '../components/ProgressBar'
 import Timer from '../components/Timer'
 import NextButton from '../components/NextButton'
+import ScoreResult from '../components/ScoreResult'
 
 storiesOf('ProgressBar', module)
   .add('0/20', () => <ProgressBar currentQuestion={0} />)
@@ -18,3 +19,8 @@ storiesOf('Timer', module).add('Basic', () => <Timer countdown={15} />)
 storiesOf('NextButton', module)
   .add('disabled', () => <NextButton disabled />)
   .add('not disabled', () => <NextButton />)
+storiesOf('Timer', module).add('Basic Timer', () => <Timer countdown={15} />)
+
+storiesOf('ScoreResult', module).add('12/20 Final Score', () => (
+  <ScoreResult totalScore={20} userScore={12} />
+))
