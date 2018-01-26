@@ -3,8 +3,8 @@ import React from 'react'
 import Question from './Question'
 
 describe('#Question', () => {
-  it('should render a question component', () => {
+  it('should render a question component using ReactMarkdown', () => {
     const wrapper = shallow(<Question question="2 + 2 ?" />)
-    expect(wrapper.find('ReactMarkdown').prop('source')).toEqual('2 + 2 ?')
+    expect(wrapper.find('Markdown').prop('source')).toEqual('2 + 2 ?')
   })
 })
