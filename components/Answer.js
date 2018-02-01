@@ -4,7 +4,7 @@ import Markdown from './Markdown'
 
 const Answer = ({ answer }) => (
   <label>
-    <input type="radio" />
+    <input name="answer" value={answer} type="radio" />
     <Markdown source={answer} />
   </label>
 )
