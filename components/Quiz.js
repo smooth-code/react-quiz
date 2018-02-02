@@ -11,14 +11,27 @@ const Quiz = ({
   countdown,
   currentQuestion,
   questionCount,
-  disabled,
+  onSubmit,
+  onSelect,
+  disabledSubmitButton,
+  getNextQuestion,
 }) => (
   <div>
     <Question question={question} />
-    <form>
-      {answers.map(answer => <Answer answer={answer} key={answer} />)}
+    <form onSubmit={onSubmit}>
+      {answers.map((answer, key) => (
+        <Answer
+          answer={answer}
+          key={String(answer)}
+          value={key}
+          onClick={onSelect}
+        />
+      ))}
+      <button type="submit" value="submit" disabled={disabledSubmitButton}>
+        submit and pause
+      </button>
+      <NextButton disabled={disabledSubmitButton} onClick={getNextQuestion} />
     </form>
-    <NextButton disabled={disabled} />
     <Timer countdown={countdown} />
     <ProgressBar
       currentQuestion={currentQuestion}

@@ -1,32 +1,16 @@
 import next from 'next'
 import path from 'path'
 import express from 'express'
-import passport from 'passport'
-import { Strategy as GitHubStrategy } from 'passport-github2'
-import { createUserFromGitHubProfile } from 'server/services/github'
+import session from 'express-session'
+import bodyParser from 'body-parser'
 import config from 'server/config'
-import { connect as connectDatabase } from 'server/services/database'
-
-connectDatabase()
+import passport, { ensureAuthenticated } from './passport'
+import { getCurrentQuestion, getNextQuestion, postAnswer } from './coreGameAPI'
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-
-passport.use(
-  new GitHubStrategy(
-    config.get('github'),
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = await createUserFromGitHubProfile({ profile, accessToken })
-        done(null, user)
-      } catch (e) {
-        done(e)
-      }
-    },
-  ),
-)
 
 app
   .prepare()
@@ -37,7 +21,11 @@ app
     server.use(
       express.static(path.resolve(__dirname, '../node_modules/prismjs/themes')),
     )
+    server.use(session(config.get('session')))
+    server.use(bodyParser.json())
     server.use(passport.initialize())
+    server.use(passport.session())
+
     server.get('/', (req, res) => {
       const actualPage = '/Home'
       app.render(req, res, actualPage)
@@ -53,12 +41,25 @@ app
       passport.authenticate('github', {
         successRedirect: '/',
         failureRedirect: '/',
-        session: false,
       }),
       (req, res) => {
         res.redirect('/')
       },
     )
+    server.get('/logout', (req, res) => {
+      req.logout()
+      res.redirect('/')
+    })
+
+    server.get('/ReactQuiz', ensureAuthenticated, (req, res) => {
+      app.render(req, res, '/ReactQuiz')
+    })
+
+    server.get('/api/current', ensureAuthenticated, getCurrentQuestion)
+
+    server.get('/api/next', ensureAuthenticated, getNextQuestion)
+
+    server.post('/api/submit', ensureAuthenticated, postAnswer)
 
     server.get('*', (req, res) => handle(req, res))
 

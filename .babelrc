@@ -8,7 +8,8 @@
         }
       }
     ],
-    "react"
+    "react",
+    "next/babel"
   ],
   "plugins": [
     "transform-object-rest-spread",

@@ -10,7 +10,6 @@ export function connect() {
     knex = Knex(knexConfig[config.get('env')])
     Model.knex(knex)
   }
-
   return knex
 }
 

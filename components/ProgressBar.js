@@ -76,8 +76,8 @@ const BarWrapper = styled.div`
 
 const ProgressBar = ({
   size = 500,
-  currentQuestion = 0,
-  questionCount = 20,
+  currentQuestion,
+  questionCount,
   color = '#4c909b',
   scoreBox = true,
 }) => {

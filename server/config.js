@@ -27,6 +27,16 @@ const config = convict({
       default: 'http://127.0.0.1:3000/auth/github/callback',
     },
   },
+  session: {
+    secret: {
+      doc: 'session secret',
+      format: String,
+      default: '',
+      env: 'SESSION_SECRET',
+    },
+    resave: false,
+    saveUninitialized: true,
+  },
 })
 
 const env = config.get('env')

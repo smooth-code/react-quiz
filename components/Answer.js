@@ -2,9 +2,9 @@
 import React from 'react'
 import Markdown from './Markdown'
 
-const Answer = ({ answer }) => (
+const Answer = ({ answer, onClick, value }) => (
   <label>
-    <input name="answer" value={answer} type="radio" />
+    <input name="answer" value={value} onClick={onClick} type="radio" />
     <Markdown source={answer} />
   </label>
 )
